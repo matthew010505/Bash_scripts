@@ -14,6 +14,11 @@
 # AWS Lambda
 # AWS IAM Users
 
+# Create a log file with a timestamp
+LOG_FILE="aws_report_$(date +'%Y%m%d_%H%M%S').log"
+
+# Redirect all output to the log file
+exec > >(tee -a "$LOG_FILE") 2>&1
 set -x
 
 
