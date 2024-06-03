@@ -14,6 +14,13 @@ This script retrieves a list of users with read access (pull access) to a specif
 2. **Set Credentials (Optional):**
     * For improved security, it's recommended to avoid storing your username and token directly in the script. You can provide them as arguments when running the script.
     * If you choose to store them in the script, replace `$username` and `$token` with your actual GitHub username and personal access token (generated from your account settings).
+    * else export the username and token
+        ```bash
+        export username="<username>"
+        ```
+         ```bash
+        export token="<token>"
+        ```
     * **Important:** Never share your personal access token publicly.
 
 3. **Run the Script:**
