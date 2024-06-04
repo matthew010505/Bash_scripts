@@ -46,6 +46,49 @@ Listing users with read access to owner/repo_name...
 user1
 user2
 ```
+**To Get all the Data:**
+* Remove pipe along with  `jq` command .
+  ```bash
+  collaborators="$(github_api_get "$endpoint" )"
+  ```
+  **Example Output:**
+  ```
+   Listing users with read access to matthew010505/Bash_scripts...
+Users with read access to matthew010505/Bash_scripts:
+[
+  {
+    "login": "matthew010505",
+    "id": 117917780,
+    "node_id": "U_kgDOBwdIVA",
+    "avatar_url": "https://avatars.githubusercontent.com/u/117917780?v=4",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/matthew010505",
+    "html_url": "https://github.com/matthew010505",
+    "followers_url": "https://api.github.com/users/matthew010505/followers",
+    "following_url": "https://api.github.com/users/matthew010505/following{/other_user}",
+    "gists_url": "https://api.github.com/users/matthew010505/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/matthew010505/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/matthew010505/subscriptions",
+    "organizations_url": "https://api.github.com/users/matthew010505/orgs",
+    "repos_url": "https://api.github.com/users/matthew010505/repos",
+    "events_url": "https://api.github.com/users/matthew010505/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/matthew010505/received_events",
+    "type": "User",
+    "site_admin": false,
+    "permissions": {
+      "admin": true,
+      "maintain": true,
+      "push": true,
+      "triage": true,
+      "pull": true
+    },
+    "role_name": "admin"
+  }
+]
+   ```
+  
+  
+  
 
 **Additional Notes:**
 
