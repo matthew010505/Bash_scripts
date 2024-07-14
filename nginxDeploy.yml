@@ -1,0 +1,53 @@
+---
+- name: Install and Start nginx and deploy application
+  hosts: all
+  become: yes
+
+  vars:
+    node_version: "14.x"
+
+  tasks:
+
+    - name: Update and Install Dependencies
+      apt:
+        update_cache: yes
+
+    - name: Install nginx
+      apt:
+        name: nginx
+        state: present
+    - name: Start nginx
+      service:
+        name: nginx
+        state: started
+    - name: Install  Node Js
+      apt:
+        name: nodejs
+        state: present
+    - name: Install npm
+      apt:
+        name: npm
+        state: present
+    - name: Ensure app directory Exists
+      file:
+        path: "{{app_dir}}"
+        state: directory
+        mode: 0755
+    -name: Copy application to server
+     copy:
+        src: ./application
+        dest: "{{app_dir}}"
+        owner: www-data
+        group: www-data
+        mode: 0755
+    -name: install Project Dependencies
+     npm:
+       path: "{{app_dir}}"
+       state: present
+
+    - name: Build the  Application
+      command: npm run build
+      args:
+        chdir: "{{ app_dir }}"
+
+    
